@@ -39,7 +39,7 @@
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/loginUserLayout"
                             android:layout_width="380dp"
-                            android:layout_height="58dp"
+                            android:layout_height="60dp"
                             android:layout_marginStart="30dp"
                             android:layout_marginTop="25dp"
                             app:boxCornerRadiusBottomEnd="8dp"
@@ -57,7 +57,7 @@
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/loginUser"
                                 android:layout_width="350dp"
-                                android:layout_height="50dp"
+                                android:layout_height="54dp"
                                 android:layout_marginTop="52dp"
                                 android:ems="10"
                                 android:hint="Nume Utilizator"
@@ -71,7 +71,7 @@
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/loginPasswordLayout"
                             android:layout_width="380dp"
-                            android:layout_height="58dp"
+                            android:layout_height="60dp"
                             android:layout_marginStart="30dp"
                             android:layout_marginTop="20dp"
                             android:layout_marginBottom="40dp"
@@ -91,7 +91,7 @@
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/loginPassword"
                                 android:layout_width="350dp"
-                                android:layout_height="50dp"
+                                android:layout_height="54dp"
                                 android:layout_marginBottom="36dp"
                                 android:autofillHints="yes"
                                 android:ems="10"
