@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.HotelTest1" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/lime</item>
+        <item name="colorPrimaryDark">@color/lime</item>
+        <item name="colorAccent">@color/limedark</item>
+        <item name="android:windowBackground">@color/limedark</item>
+        <item name="colorControlNormal">@color/lime</item>
+    </style>
+</resources>
