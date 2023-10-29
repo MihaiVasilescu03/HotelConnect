@@ -117,6 +117,7 @@
             android:backgroundTint="@color/lime"
             android:drawableLeft="@drawable/loginbuttonimage"
             android:text="@string/log_in"
+            android:onClick=""
             android:textColor="@color/darkgrey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
