@@ -1,4 +1,4 @@
-package com.example.hoteltest1;
+package com.example.hotelconnect;
 
 import android.content.Context;
 

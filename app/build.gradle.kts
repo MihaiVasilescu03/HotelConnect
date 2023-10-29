@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.hoteltest1"
+    namespace = "com.example.hotelconnect"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.hoteltest1"
+        applicationId = "com.example.hotelconnect"
         minSdk = 26
         targetSdk = 33
         versionCode = 1

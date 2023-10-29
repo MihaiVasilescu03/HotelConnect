@@ -1,4 +1,4 @@
-package com.example.hoteltest1;
+package com.example.hotelconnect;
 
 import org.junit.Test;
 
