@@ -6,7 +6,7 @@
         <item name="colorPrimary">@color/lime</item>
         <item name="colorPrimaryDark">@color/lime</item>
         <item name="colorAccent">@color/limedark</item>
-        <item name="android:windowBackground">@color/limedark</item>
+        <item name="android:windowBackground">@color/limebg</item>
         <item name="colorControlNormal">@color/lime</item>
     </style>
 </resources>

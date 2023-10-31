@@ -7,5 +7,8 @@
     <color name="darkgrey">#373737</color>
     <color name="limedark">#042100</color>
     <color name="limeyellow">#C6D1BB</color>
-
+    <color name="limebg">#42572D</color>
+    <style name="LimedarkIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/limedark</item>
+    </style>
 </resources>

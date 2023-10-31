@@ -7,20 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
-        activityChangeIntent(R.id.loginButton, ManagerManageActivity.class);
-    }
-    public void activityChangeIntent(int buttonId, final Class<?> activityToStart) {
-        Button button = (Button) findViewById(buttonId);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), activityToStart);
-                startActivity(i);
-            }
-        });
-    }
+public class MainActivity {
+
+
 }
