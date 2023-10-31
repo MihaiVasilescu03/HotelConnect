@@ -97,7 +97,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/loginUserLayout">
+                        app:layout_constraintTop_toBottomOf="@+id/removeNumeLayout">
 
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -108,7 +108,7 @@
                             android:autofillHints="yes"
                             android:ems="10"
                             android:hint="Prenume"
-                            android:inputType="textPassword"
+                            android:inputType="text"
                             android:textColorHint="@color/limedark"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
