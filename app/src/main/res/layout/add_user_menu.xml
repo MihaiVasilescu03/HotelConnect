@@ -37,7 +37,7 @@
                         app:boxCornerRadiusBottomStart="8dp"
                         app:boxCornerRadiusTopEnd="8dp"
                         app:boxCornerRadiusTopStart="8dp"
-                        app:boxStrokeColor="#4fa5d5"
+                        app:boxStrokeColor="@color/lime"
                         app:boxStrokeWidth="1dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -68,10 +68,9 @@
                         app:boxCornerRadiusBottomStart="8dp"
                         app:boxCornerRadiusTopEnd="8dp"
                         app:boxCornerRadiusTopStart="8dp"
-                        app:boxStrokeColor="#4fa5d5"
+                        app:boxStrokeColor="@color/lime"
                         app:boxStrokeWidth="1dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
@@ -93,13 +92,15 @@
                         android:id="@+id/addsignupNumeLayout"
                         android:layout_width="380dp"
                         android:layout_height="60dp"
+                        android:layout_marginStart="30dp"
                         app:boxCornerRadiusBottomEnd="8dp"
                         app:boxCornerRadiusBottomStart="8dp"
                         app:boxCornerRadiusTopEnd="8dp"
                         app:boxCornerRadiusTopStart="8dp"
-                        app:boxStrokeColor="#4fa5d5"
+                        app:boxStrokeColor="@color/lime"
                         app:boxStrokeWidth="1dp"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/addsignupUserLayout">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -125,7 +126,7 @@
                         app:boxCornerRadiusBottomStart="8dp"
                         app:boxCornerRadiusTopEnd="8dp"
                         app:boxCornerRadiusTopStart="8dp"
-                        app:boxStrokeColor="#4fa5d5"
+                        app:boxStrokeColor="@color/lime"
                         app:boxStrokeWidth="1dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
