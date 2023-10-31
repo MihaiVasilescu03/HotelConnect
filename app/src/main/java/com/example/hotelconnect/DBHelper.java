@@ -27,7 +27,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     public String generateUsername(String nume , String prenume)
     {
-        return prenume + "." + nume;
+        return prenume.toLowerCase() + "." + nume.toLowerCase();
     }
     public Boolean insertData(String nume , String prenume , String email ,String password , String status)
     {
