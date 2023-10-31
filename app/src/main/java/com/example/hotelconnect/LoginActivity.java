@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 if(username.equals("") || parola.equals("")) {
-                    Toast.makeText(LoginActivity.this, "Toate campurile trebuiesc completate", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Toate campurile trebuie completate", Toast.LENGTH_SHORT).show();
 
                 }else {
                     Boolean verificareDate = helper.checkUsernamePassword(username, parola);

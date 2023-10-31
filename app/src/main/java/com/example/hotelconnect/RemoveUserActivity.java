@@ -40,7 +40,7 @@ public class RemoveUserActivity extends AppCompatActivity {
                     Toast.makeText(RemoveUserActivity.this, "Contul acesta nu poate fi sters!", Toast.LENGTH_SHORT).show();
                 else
                 if(nume.equals("")||prenume.equals("")){
-                    Toast.makeText(RemoveUserActivity.this, "Toate campurile trebuiesc completate!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RemoveUserActivity.this, "Toate campurile trebuie completate!", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Boolean numePrenume = helper.checkNumePrenume(nume,prenume);
