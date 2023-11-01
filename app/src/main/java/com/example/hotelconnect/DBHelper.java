@@ -52,6 +52,12 @@ public class DBHelper extends SQLiteOpenHelper {
         myDB.delete("Angajati","nume = ? and prenume = ?", new String[]{nume,prenume} );
         myDB.close();
     }
+    public Cursor getData()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select *from angajati",null);
+        return cursor;
+    }
 
 
     public Boolean checkUsername(String username)
