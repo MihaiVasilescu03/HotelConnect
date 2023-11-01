@@ -37,17 +37,6 @@ public class AddUserActivity extends AppCompatActivity {
         btnSignUp = (Button)findViewById(R.id.addUserButton);
         helper = new DBHelper(this);
 
-        /*btnDel = (Button) findViewById(R.id.delButton2);
-
-        helper = new DBHelper(this);
-
-        btnDel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),DeleteActivity.class);
-                startActivity(i);
-            }
-        });*/
         btnSignUp.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -60,7 +49,7 @@ public class AddUserActivity extends AppCompatActivity {
 
                 if(nume.equals("")||prenume.equals("")||email.equals("")||parola.equals(""))
                 {
-                    Toast.makeText(AddUserActivity.this, "Toate campurile trebuiesc completate", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddUserActivity.this, "Toate campurile trebuie completate", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Boolean numePrenumeValid = helper.checkNumePrenume(nume,prenume);
