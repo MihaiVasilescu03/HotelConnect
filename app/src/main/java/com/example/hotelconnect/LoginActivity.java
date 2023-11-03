@@ -13,6 +13,8 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     DBHelper helper;
 
+    DBHelper_Camere helperCamere;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,12 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = (Button) findViewById(R.id.loginButton);
 
         helper = new DBHelper(this);
+
+        helperCamere = new DBHelper_Camere(this);
+        for(int i=1;i<=4;i++)
+        {
+            helperCamere.insertData("Camera"+i,"Liber");
+        }
 
         String nume = "Bartos";
         String prenume = "Bogdan";

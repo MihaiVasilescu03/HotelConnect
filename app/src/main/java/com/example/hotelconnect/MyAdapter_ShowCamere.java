@@ -12,43 +12,40 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class MyAdapter_ShowCamere extends RecyclerView.Adapter<MyAdapter_ShowCamere.MyViewHolder> {
     private Context context;
-    private ArrayList nameId , prenumeId , statusId;
+    private ArrayList camereId , statusId;
 
-    public MyAdapter(Context context, ArrayList nameId, ArrayList prenumeId, ArrayList statusId) {
+    public MyAdapter_ShowCamere(Context context, ArrayList camereId, ArrayList statusId) {
         this.context = context;
-        this.nameId = nameId;
-        this.prenumeId = prenumeId;
+        this.camereId = camereId;
         this.statusId = statusId;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.show_user_menu , parent , false);
+        View v = LayoutInflater.from(context).inflate(R.layout.fragment_camere , parent , false);
         return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.nume_id.setText(String.valueOf(nameId.get(position)));
-        holder.prenume_id.setText(String.valueOf(prenumeId.get(position)));
+        holder.camere_id.setText(String.valueOf(camereId.get(position)));
         holder.status_id.setText(String.valueOf(statusId.get(position)));
     }
 
     @Override
     public int getItemCount() {
-        return nameId.size();
+        return camereId.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView nume_id ,prenume_id,status_id;
+        TextView camere_id ,status_id;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            nume_id = itemView.findViewById(R.id.numeRecycler);
-            prenume_id = itemView.findViewById(R.id.prenumeRecycler);
-            status_id = itemView.findViewById(R.id.statusRecycler);
+            camere_id = itemView.findViewById(R.id.CameraRecycler);
+            status_id = itemView.findViewById(R.id.StareCameraRecycler);
         }
     }
 }

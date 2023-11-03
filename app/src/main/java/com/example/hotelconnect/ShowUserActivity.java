@@ -14,7 +14,7 @@ public class ShowUserActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<String> nume , prenume , status;
     DBHelper DB;
-    MyAdapter adapter;
+    MyAdapter_ShowUser adapter;
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycler_user);
@@ -23,7 +23,7 @@ public class ShowUserActivity extends AppCompatActivity {
         prenume = new ArrayList<>();
         status = new ArrayList<>();
         recyclerView = findViewById(R.id.RecyclerView);
-        adapter = new MyAdapter(this , nume , prenume , status);
+        adapter = new MyAdapter_ShowUser(this , nume , prenume , status);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         displayData();
