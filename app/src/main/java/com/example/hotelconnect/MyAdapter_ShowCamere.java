@@ -49,21 +49,6 @@ public class MyAdapter_ShowCamere extends RecyclerView.Adapter<MyAdapter_ShowCam
             super(itemView);
             camere_id = (TextView) itemView.findViewById(R.id.CameraRecycler);
             status_id = (TextView) itemView.findViewById(R.id.StareCameraRecycler);
-            cardView = itemView.findViewById(R.id.cardView);
-
-            // Set click listener to the CardView
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Handle the CardView click event here
-                    int position = getAdapterPosition();
-                    Context context = v.getContext();
-                    if (position != RecyclerView.NO_POSITION) {
-                        Intent i = new Intent(context,SwitchStatusCamera.class);
-                        context.startActivity(i);
-                    }
-                    }
-                });
         }
     }
 }

@@ -8,7 +8,6 @@
     app:cardCornerRadius="16dp"
     android:layout_margin="16dp"
     android:backgroundTint="@color/limeyellow"
-    android:clickable="true"
     android:id="@+id/cardView"
     >
 
