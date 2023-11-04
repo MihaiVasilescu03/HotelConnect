@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class DBHelper_Camere extends SQLiteOpenHelper {
 
@@ -38,11 +41,23 @@ public class DBHelper_Camere extends SQLiteOpenHelper {
         } else {return true;}
 
     }
-    public Cursor getData()
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select *from Camere",null);
-        return cursor;
+    public List<CamereList> getData() {
+        List<CamereList> dataList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM Camere", null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String column1Value = cursor.getString(cursor.getColumnIndexOrThrow("camera"));
+                String column2Value = cursor.getString(cursor.getColumnIndexOrThrow("status"));
+                CamereList data = new CamereList(column1Value, column2Value);
+                dataList.add(data);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return dataList;
     }
 
     public Boolean checkStatus(String camera, String stats)

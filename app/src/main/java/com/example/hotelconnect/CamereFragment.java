@@ -14,70 +14,35 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CamereFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class CamereFragment extends Fragment {
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
+    List<CamereList> camereList;
 
     RecyclerView recyclerView;
-    ArrayList<String> camere , status;
 
-    DBHelper_Camere DB;
     MyAdapter_ShowCamere adapter;
 
-    public CamereFragment() {
-    }
-
-
-    public static CamereFragment newInstance(String param1, String param2) {
-        CamereFragment fragment = new CamereFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
-        DB = new DBHelper_Camere(this);
-        camere = new ArrayList<>();
-        status = new ArrayList<>();
-        recyclerView = findViewById(R.id.CameraRecycler);
-        adapter = new MyAdapter_ShowUser(this , camere , status);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new FragmentManager(this));
-        displayData();
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_camere, container, false);
-    }
-    private void displayData() {
-        Cursor cursor = DB.getData();
+        View view = inflater.inflate(R.layout.fragment_camere, container, false);
 
-            while(cursor.moveToNext()){
-                camere.add(cursor.getString(0));
-                status.add(cursor.getString(1));
-            }
+        camereList = getDataFromDatabase();
+
+        recyclerView = view.findViewById(R.id.RecyclerViewCamere);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        adapter = new MyAdapter_ShowCamere(camereList);
+        recyclerView.setAdapter(adapter);
+
+        return view;
+    }
+    private List<CamereList> getDataFromDatabase() {
+        DBHelper_Camere dbHelper = new DBHelper_Camere(getContext());
+        List<CamereList> data = dbHelper.getData();
+        return data;
     }
 }

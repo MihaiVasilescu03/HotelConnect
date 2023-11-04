@@ -1,6 +1,7 @@
 package com.example.hotelconnect;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,44 +9,62 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdapter_ShowCamere extends RecyclerView.Adapter<MyAdapter_ShowCamere.MyViewHolder> {
-    private Context context;
-    private ArrayList camereId , statusId;
+    List<CamereList> camereList;
 
-    public MyAdapter_ShowCamere(Context context, ArrayList camereId, ArrayList statusId) {
-        this.context = context;
-        this.camereId = camereId;
-        this.statusId = statusId;
+    public MyAdapter_ShowCamere(List<CamereList> camereList) {
+        this.camereList = camereList;
     }
 
-    @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.fragment_camere , parent , false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.show_camere_layout , parent , false);
         return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.camere_id.setText(String.valueOf(camereId.get(position)));
-        holder.status_id.setText(String.valueOf(statusId.get(position)));
+        CamereList camere = camereList.get(position);
+        holder.camere_id.setText(camere.getCamere());
+        holder.status_id.setText(camere.getStatus());
     }
 
     @Override
     public int getItemCount() {
-        return camereId.size();
+        return camereList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView camere_id ,status_id;
+        CardView cardView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            camere_id = itemView.findViewById(R.id.CameraRecycler);
-            status_id = itemView.findViewById(R.id.StareCameraRecycler);
+            camere_id = (TextView) itemView.findViewById(R.id.CameraRecycler);
+            status_id = (TextView) itemView.findViewById(R.id.StareCameraRecycler);
+            cardView = itemView.findViewById(R.id.cardView);
+
+            // Set click listener to the CardView
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Handle the CardView click event here
+                    int position = getAdapterPosition();
+                    Context context = v.getContext();
+                    if (position != RecyclerView.NO_POSITION) {
+                        Intent i = new Intent(context,SwitchStatusCamera.class);
+                        context.startActivity(i);
+                    }
+                    }
+                });
         }
     }
 }
+
