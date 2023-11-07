@@ -40,6 +40,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:text="Profil"
+        android:textColor="@color/limedark"
         app:layout_constraintBottom_toTopOf="@+id/userCoordinatorLayout"
         app:layout_constraintStart_toStartOf="parent" />
 
