@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".ManagerActivity">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/managerProfileButton"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/roundedsquare"
+        android:textAllCaps="false"
+        android:drawableLeft="@drawable/profileicon"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Profil"
+        app:layout_constraintBottom_toTopOf="@+id/managerCoordinatorLayout"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/managerCoordinatorLayout"
         android:layout_width="match_parent"
@@ -25,8 +40,7 @@
             app:itemRippleColor="@color/limedark"
             app:itemTextAppearanceActive="@color/limedark"
             app:itemTextColor="@color/limedark"
-            app:menu="@menu/manager_nav_menu">
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
+            app:menu="@menu/manager_nav_menu"></com.google.android.material.bottomnavigation.BottomNavigationView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <FrameLayout

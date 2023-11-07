@@ -1,6 +1,9 @@
 package com.example.hotelconnect;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -23,6 +26,11 @@ public class UserActivity extends AppCompatActivity {
                 replaceFragment(new CamereFragment());
             }
             return true;
+        });
+        Button profileButton = (Button) findViewById(R.id.userProfileButton);
+        profileButton.setOnClickListener(v -> {
+            Intent intent = new Intent(UserActivity.this, ProfileActivity.class);
+            startActivity(intent);
         });
     }
     private void replaceFragment(Fragment fragment){

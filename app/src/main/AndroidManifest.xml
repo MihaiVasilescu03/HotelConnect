@@ -24,5 +24,6 @@
         <activity android:name=".ShowUserActivity" android:exported="true"/>
         <activity android:name=".RemoveUserActivity" android:exported="true"/>
         <activity android:name=".SwitchStatusCamera" android:exported="true"/>
+        <activity android:name=".ProfileActivity" android:exported="true"/>
     </application>
 </manifest>

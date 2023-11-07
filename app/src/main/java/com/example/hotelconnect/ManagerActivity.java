@@ -1,6 +1,10 @@
 package com.example.hotelconnect;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -11,7 +15,6 @@ import com.example.hotelconnect.databinding.ManagerMenuBinding;
 public class ManagerActivity extends AppCompatActivity {
     ManagerMenuBinding binding;
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         binding = ManagerMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -25,6 +28,11 @@ public class ManagerActivity extends AppCompatActivity {
                 replaceFragment(new CamereFragment());
             }
             return true;
+        });
+        Button profileButton = (Button) findViewById(R.id.managerProfileButton);
+        profileButton.setOnClickListener(v -> {
+            Intent intent = new Intent(ManagerActivity.this, ProfileActivity.class);
+            startActivity(intent);
         });
     }
     private void replaceFragment(Fragment fragment){
