@@ -21,12 +21,12 @@ public class RemoveUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.remove_user_menu);
 
-        numeDel = (EditText) findViewById(R.id.removeNume);
-        prenumeDel = (EditText) findViewById(R.id.removePrenume);
+        numeDel = findViewById(R.id.removeNume);
+        prenumeDel = findViewById(R.id.removePrenume);
 
         helper = new DBHelper(this);
 
-        btnDel = (Button) findViewById(R.id.removeUserButton_2);
+        btnDel = findViewById(R.id.removeUserButton_2);
         ImageButton backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(view -> onBackPressed());
         btnDel.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +43,7 @@ public class RemoveUserActivity extends AppCompatActivity {
                 }
                 else{
                     Boolean numePrenume = helper.checkNumePrenume(nume,prenume);
-                    if(numePrenume == true)
+                    if(numePrenume)
                     {
                         Toast.makeText(RemoveUserActivity.this, "Contul a fost sters cu succes!", Toast.LENGTH_SHORT).show();
                         helper.deleteData(nume,prenume);

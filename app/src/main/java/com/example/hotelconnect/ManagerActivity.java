@@ -2,14 +2,11 @@ package com.example.hotelconnect;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import com.example.hotelconnect.databinding.ManagerMenuBinding;
 
 public class ManagerActivity extends AppCompatActivity {
@@ -29,7 +26,7 @@ public class ManagerActivity extends AppCompatActivity {
             }
             return true;
         });
-        Button profileButton = (Button) findViewById(R.id.managerProfileButton);
+        Button profileButton = findViewById(R.id.managerProfileButton);
         profileButton.setOnClickListener(v -> {
             Intent intent = new Intent(ManagerActivity.this, ProfileActivity.class);
             startActivity(intent);

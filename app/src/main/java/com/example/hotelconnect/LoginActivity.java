@@ -2,6 +2,7 @@ package com.example.hotelconnect;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Button;
 import android.os.Bundle;
@@ -20,10 +21,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        numeReg = (EditText) findViewById(R.id.loginUser);
-        parolaReg = (EditText) findViewById(R.id.loginPassword);
+        numeReg = findViewById(R.id.loginUser);
+        parolaReg = findViewById(R.id.loginPassword);
 
-        btnLogin = (Button) findViewById(R.id.loginButton);
+        btnLogin = findViewById(R.id.loginButton);
 
         helper = new DBHelper(this);
 
@@ -35,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
 
         String nume = "Bartos";
         String prenume = "Bogdan";
-        if(helper.checkNumePrenume(nume,prenume) == false)
+        if(!helper.checkNumePrenume(nume,prenume) )
             helper.insertData(nume,prenume,"office@hotelstop.ro","manager123", "manager");
         btnLogin.setOnClickListener(new View.OnClickListener() {
 
@@ -45,6 +46,8 @@ public class LoginActivity extends AppCompatActivity {
                 String username = numeReg.getText().toString();
                 String parola = parolaReg.getText().toString();
 
+                boolean isAuthenticated = helper.authenticateUser(username, parola);
+
 
                 if(username.equals("") || parola.equals("")) {
                     Toast.makeText(LoginActivity.this, "Toate campurile trebuie completate", Toast.LENGTH_SHORT).show();
@@ -52,15 +55,24 @@ public class LoginActivity extends AppCompatActivity {
                 }else {
                     Boolean verificareDate = helper.checkUsernamePassword(username, parola);
                     if (verificareDate) {
-                        Toast.makeText(LoginActivity.this, "Conectarea a reusit!", Toast.LENGTH_SHORT).show();
-                        Boolean verificareStatus = helper.checkStatus(username,"manager");
-                        if(verificareStatus){
-                            Intent i = new Intent(getApplicationContext(),ManagerActivity.class);
-                            startActivity(i);
-                        }
-                        else{
-                            Intent i = new Intent(getApplicationContext(), UserActivity.class);
-                            startActivity(i);
+                        if (isAuthenticated) {
+
+                            SharedPreferences preferences = getSharedPreferences("user_logat", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("username", username);
+                            editor.putString("password", parola);
+                            editor.apply();
+
+                            Toast.makeText(LoginActivity.this, "Conectarea a reusit!", Toast.LENGTH_SHORT).show();
+                            Boolean verificareStatus = helper.checkStatus(username,"manager");
+                            if(verificareStatus){
+                                Intent i = new Intent(getApplicationContext(),ManagerActivity.class);
+                                startActivity(i);
+                            }
+                            else{
+                                Intent i = new Intent(getApplicationContext(), UserActivity.class);
+                                startActivity(i);
+                            }
                         }
                     } else{
                         Toast.makeText(LoginActivity.this, "Numele utilizatorului sau parola sunt gresite!", Toast.LENGTH_SHORT).show();

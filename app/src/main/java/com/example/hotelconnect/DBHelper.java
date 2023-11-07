@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -57,15 +56,17 @@ public class DBHelper extends SQLiteOpenHelper {
     {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select *from angajati",null);
+        cursor.close();
         return cursor;
     }
-    public void updatePassword(String newPassword , String oldPassword)
+    public boolean updatePassword(String username, String newPassword , String oldPw)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("password" , newPassword);
-        db.update("Angajati" , values , "password = ?", new String[]{oldPassword});
+        int afectat = db.update("Angajati" , values , "username = ? and password = ?", new String[]{username,oldPw});
         db.close();
+        return afectat > 0;
     }
 
 
@@ -119,4 +120,14 @@ public class DBHelper extends SQLiteOpenHelper {
         else
             return false;
     }
+
+    public boolean authenticateUser(String username, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("Angajati", null, "username = ?  AND  + password = ?",
+                new String[]{username, password}, null, null, null);
+        boolean isValidUser = cursor.getCount() > 0;
+        cursor.close();
+        return isValidUser;
+    }
+
 }

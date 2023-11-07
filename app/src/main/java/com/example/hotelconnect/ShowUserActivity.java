@@ -38,7 +38,6 @@ public class ShowUserActivity extends AppCompatActivity {
         if(cursor.getCount() == 0)
         {
             Toast.makeText(this, "Baza de date este goala", Toast.LENGTH_SHORT).show();
-            return;
         }else
         {
             while(cursor.moveToNext()){

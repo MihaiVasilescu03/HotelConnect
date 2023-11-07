@@ -27,7 +27,7 @@ public class UserActivity extends AppCompatActivity {
             }
             return true;
         });
-        Button profileButton = (Button) findViewById(R.id.userProfileButton);
+        Button profileButton = findViewById(R.id.userProfileButton);
         profileButton.setOnClickListener(v -> {
             Intent intent = new Intent(UserActivity.this, ProfileActivity.class);
             startActivity(intent);
