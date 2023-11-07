@@ -14,7 +14,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="256dp"
         android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/changePasswordButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -104,7 +104,7 @@
     </FrameLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
+        android:id="@+id/changePasswordButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="11dp"
