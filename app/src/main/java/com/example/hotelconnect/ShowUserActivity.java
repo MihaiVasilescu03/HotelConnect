@@ -19,6 +19,7 @@ public class ShowUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycler_user);
+
         DB = new DBHelper(this);
         nume = new ArrayList<>();
         prenume = new ArrayList<>();
@@ -28,6 +29,7 @@ public class ShowUserActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         displayData();
+
         ImageButton backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(view -> onBackPressed());
 

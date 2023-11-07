@@ -55,34 +55,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor getData()
     {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select *from angajati",null);
-        cursor.close();
+        Cursor cursor = db.rawQuery("select *from Angajati",null);
         return cursor;
     }
-    public boolean updatePassword(String username, String newPassword , String oldPw)
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("password" , newPassword);
-        int afectat = db.update("Angajati" , values , "username = ? and password = ?", new String[]{username,oldPw});
-        db.close();
-        return afectat > 0;
-    }
-
-
-    public Boolean checkOldPassword(String oldPassword)
-    {
-        SQLiteDatabase myDB = this.getWritableDatabase();
-        Cursor cursor = myDB.rawQuery("SELECT password FROM Angajati where password = ?" , new String[]{oldPassword});
-        if(cursor.getCount() > 0 )
-        {
-            cursor.close();
-            return true;
-        }
-        else
-            return false;
-    }
-
     public Boolean checkStatus(String username, String stats)
     {
         SQLiteDatabase myDB = this.getWritableDatabase();
@@ -129,5 +104,29 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         return isValidUser;
     }
+    public boolean updatePassword(String username, String newPassword , String oldPw)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("password" , newPassword);
+        int afectat = db.update("Angajati" , values , "username = ? and password = ?", new String[]{username,oldPw});
+        db.close();
+        return afectat > 0;
+    }
+
+
+    public Boolean checkOldPassword(String oldPassword)
+    {
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        Cursor cursor = myDB.rawQuery("SELECT password FROM Angajati where password = ?" , new String[]{oldPassword});
+        if(cursor.getCount() > 0 )
+        {
+            cursor.close();
+            return true;
+        }
+        else
+            return false;
+    }
+
 
 }
