@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +23,8 @@ public class ProfileActivity extends AppCompatActivity {
         newPassword = (EditText)findViewById(R.id.profileNewPassword);
         btn = (Button) findViewById(R.id.changePasswordButton);
         helper = new DBHelper(this);
-
+        ImageButton backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(view -> onBackPressed());
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,7 +39,8 @@ public class ProfileActivity extends AppCompatActivity {
                     if (checkPw) {
                         helper.updatePassword(newPw , oldPw);
                         Toast.makeText(ProfileActivity.this, "Parola a fost schimbata!", Toast.LENGTH_SHORT).show();
-
+                        oldPassword.setText("");
+                        newPassword.setText("");
                     }
                     else{
                         Toast.makeText(ProfileActivity.this, "Parola veche este gresita!", Toast.LENGTH_SHORT).show();

@@ -13,11 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class RemoveUserActivity extends AppCompatActivity {
 
     EditText numeDel,prenumeDel;
-
     DBHelper helper;
     Button btnDel;
-
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
