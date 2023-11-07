@@ -2,6 +2,7 @@ package com.example.hotelconnect;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +28,8 @@ public class ShowUserActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         displayData();
+        ImageButton backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(view -> onBackPressed());
 
     }
 

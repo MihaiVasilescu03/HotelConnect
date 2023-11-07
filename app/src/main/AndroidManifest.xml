@@ -20,7 +20,7 @@
         </activity>
         <activity android:name=".ManagerActivity" android:exported="true"/>
         <activity android:name=".UserActivity" android:exported="true"/>
-        <activity android:name=".AddUserActivity" android:exported="true"/>
+        <activity android:name=".AddUserActivity" android:parentActivityName=".ManagerActivity"/>
         <activity android:name=".ShowUserActivity" android:exported="true"/>
         <activity android:name=".RemoveUserActivity" android:exported="true"/>
         <activity android:name=".SwitchStatusCamera" android:exported="true"/>

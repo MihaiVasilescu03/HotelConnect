@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,7 +37,8 @@ public class AddUserActivity extends AppCompatActivity {
         parolaReg = (EditText)findViewById(R.id.addsignupPassword);
         btnSignUp = (Button)findViewById(R.id.addUserButton);
         helper = new DBHelper(this);
-
+        ImageButton backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(view -> onBackPressed());
         btnSignUp.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -46,7 +48,6 @@ public class AddUserActivity extends AppCompatActivity {
                 String email = emailReg.getText().toString();
                 String parola = parolaReg.getText().toString();
                 String statusReg = spinner.getSelectedItem().toString();
-
                 if(nume.equals("")||prenume.equals("")||email.equals("")||parola.equals(""))
                 {
                     Toast.makeText(AddUserActivity.this, "Toate campurile trebuie completate", Toast.LENGTH_SHORT).show();

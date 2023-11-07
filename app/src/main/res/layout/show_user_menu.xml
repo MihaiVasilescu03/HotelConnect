@@ -1,81 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ShowUserActivity"
-    app:cardElevation="12dp"
-    app:cardCornerRadius="16dp"
     android:layout_margin="16dp"
-    android:backgroundTint="@color/limeyellow">
+    android:backgroundTint="@color/limeyellow"
+    android:translationY="60dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="12dp"
+    tools:context=".ShowUserActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center_vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nume : "
-            android:textSize="24dp"
-            android:textColor="@color/black"
-            style="bold" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/numeRecycler"
-        android:textSize="24dp"
-        android:textColor="@color/black"
-        style="bold" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center_vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Prenume : "
-            android:textSize="24dp"
-            android:textColor="@color/black"
-            style="bold" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/prenumeRecycler"
-            android:textSize="24dp"
-            android:textColor="@color/black"
-            style="bold" />
-     </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
             <TextView
+                style="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nume : "
+                android:textColor="@color/black"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/numeRecycler"
+                style="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prenume : "
+                android:textColor="@color/black"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/prenumeRecycler"
+                style="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Status : "
-                android:textSize="24dp"
                 android:textColor="@color/black"
-                style="bold" />
+                android:textSize="24dp" />
+
             <TextView
+                android:id="@+id/statusRecycler"
+                style="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/statusRecycler"
-                android:textSize="24dp"
                 android:textColor="@color/black"
-                style="bold" />
+                android:textSize="24dp" />
         </LinearLayout>
     </LinearLayout>
-
 
 </androidx.cardview.widget.CardView>

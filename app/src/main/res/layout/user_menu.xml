@@ -41,8 +41,8 @@
         android:paddingRight="20dp"
         android:text="Profil"
         app:layout_constraintBottom_toTopOf="@+id/userCoordinatorLayout"
-
         app:layout_constraintStart_toStartOf="parent" />
+
     <FrameLayout
         android:id="@+id/userFrameLayout"
         android:layout_width="0dp"
