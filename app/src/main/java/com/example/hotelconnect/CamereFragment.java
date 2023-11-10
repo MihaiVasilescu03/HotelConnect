@@ -35,7 +35,7 @@ public class CamereFragment extends Fragment {
         recyclerView = view.findViewById(R.id.RecyclerViewCamere);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        adapter = new MyAdapter_ShowCamere(camereList);
+        adapter = new MyAdapter_ShowCamere(camereList , requireContext());
         recyclerView.setAdapter(adapter);
 
         return view;

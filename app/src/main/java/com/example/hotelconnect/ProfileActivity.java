@@ -1,6 +1,8 @@
 package com.example.hotelconnect;
 
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 
 import android.os.Bundle;
@@ -10,11 +12,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ProfileActivity extends AppCompatActivity {
     EditText oldPassword , newPassword;
-    Button btn;
+    Button btn , logout;
     DBHelper helper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
         newPassword = findViewById(R.id.profileNewPassword);
         final SharedPreferences[] preferences = new SharedPreferences[1];
 
+        logout = findViewById(R.id.LogoutButton);
 
         btn = findViewById(R.id.changePasswordButton);
 
@@ -70,6 +74,35 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
+                builder.setTitle("Confirmare Logout!").
+                        setMessage("Esti sigur ca vrei sa te deconectezi?");
+                builder.setPositiveButton("Da",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                finish();
+                                startActivity(i);
+                            }
+                        });
+                builder.setNegativeButton("Nu",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alertLogout = builder.create();
+                alertLogout.show();
+
+            }
+        });
+
 
     }
 

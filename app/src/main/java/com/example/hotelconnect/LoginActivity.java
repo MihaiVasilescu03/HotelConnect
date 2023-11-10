@@ -29,10 +29,17 @@ public class LoginActivity extends AppCompatActivity {
         helper = new DBHelper(this);
 
         helperCamere = new DBHelper_Camere(this);
+
         for(int i=1;i<=4;i++)
         {
             helperCamere.insertData("Camera"+i,"Liber");
         }
+
+        for(int i=5;i<=10;i++)
+        {
+            helperCamere.insertData("Camera"+i,"Ocupat");
+        }
+
 
         String nume = "Bartos";
         String prenume = "Bogdan";
@@ -73,6 +80,8 @@ public class LoginActivity extends AppCompatActivity {
                                 Intent i = new Intent(getApplicationContext(), UserActivity.class);
                                 startActivity(i);
                             }
+                            numeReg.setText("");
+                            parolaReg.setText("");
                         }
                     } else{
                         Toast.makeText(LoginActivity.this, "Numele utilizatorului sau parola sunt gresite!", Toast.LENGTH_SHORT).show();
