@@ -29,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
         newPassword = findViewById(R.id.profileNewPassword);
         final SharedPreferences[] preferences = new SharedPreferences[1];
 
-        logout = findViewById(R.id.LogoutButton);
+        logout = findViewById(R.id.logoutButton);
 
         btn = findViewById(R.id.changePasswordButton);
 
