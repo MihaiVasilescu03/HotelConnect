@@ -26,19 +26,21 @@ public class CamereFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_camere, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        camereList = getDataFromDatabase();
+            View view = inflater.inflate(R.layout.fragment_camere, container, false);
 
-        recyclerView = view.findViewById(R.id.RecyclerViewCamere);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            camereList = getDataFromDatabase();
 
-        adapter = new MyAdapter_ShowCamere(camereList , requireContext());
-        recyclerView.setAdapter(adapter);
+            recyclerView = view.findViewById(R.id.RecyclerViewCamere);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        return view;
+            adapter = new MyAdapter_ShowCamere(camereList, requireContext());
+            recyclerView.setAdapter(adapter);
+
+
+            return view;
+
     }
     private List<CamereList> getDataFromDatabase() {
         DBHelper_Camere dbHelper = new DBHelper_Camere(getContext());

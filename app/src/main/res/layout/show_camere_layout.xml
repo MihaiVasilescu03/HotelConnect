@@ -23,13 +23,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Camera : "
-                android:textSize="24dp"
-                android:textColor="@color/black"
-                style="bold" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/CameraRecycler"
                 android:textSize="24dp"
                 android:textColor="@color/black"
@@ -51,6 +44,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/StareCameraRecycler"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Observatii camera: "
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ObservatiiCameraRecycler"
                 android:textSize="24dp"
                 android:textColor="@color/black"
                 style="bold" />

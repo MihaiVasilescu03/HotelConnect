@@ -19,19 +19,20 @@ public class DBHelper_Camere extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase myDB) {
-        myDB.execSQL("create Table Camere(camera TEXT primary key , status TEXT)");
+        myDB.execSQL("create Table Camere(camera TEXT primary key , status TEXT , obs TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase myDB, int oldV, int newV) {
         myDB.execSQL("drop Table if exists Camere");
     }
-    public Boolean insertData(String camera , String status)
+    public Boolean insertData(String camera , String status, String obs)
     {
         SQLiteDatabase myDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("camera" , camera);
         contentValues.put("status", status);
+        contentValues.put("obs", obs);
         long result = myDB.insert("Camere" , null , contentValues);
         if(result == -1)
         {
@@ -48,7 +49,8 @@ public class DBHelper_Camere extends SQLiteOpenHelper {
             do {
                 String column1Value = cursor.getString(cursor.getColumnIndexOrThrow("camera"));
                 String column2Value = cursor.getString(cursor.getColumnIndexOrThrow("status"));
-                CamereList data = new CamereList(column1Value, column2Value);
+                String column3Value = cursor.getString(cursor.getColumnIndexOrThrow("obs"));
+                CamereList data = new CamereList(column1Value, column2Value, column3Value);
                 dataList.add(data);
             } while (cursor.moveToNext());
         }
