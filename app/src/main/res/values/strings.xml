@@ -5,6 +5,22 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="role_array">
         <item>Camerist(ă)</item>
-        <item>Recepționer</item>
+        <item>Recepționer(ă)</item>
+    </string-array>
+    <string-array name="room_status_array">
+        <item>De Ieșit</item>
+        <item>Liber</item>
+        <item>Curată</item>
+        <item>Verificată</item>
+        <item>De zi</item>
+        <item>În reparații</item>
+    </string-array>
+    <string-array name="room_number_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
     </string-array>
 </resources>
