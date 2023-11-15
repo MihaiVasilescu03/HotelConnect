@@ -30,16 +30,19 @@ public class LoginActivity extends AppCompatActivity {
 
         helperCamere = new DBHelper_Camere(this);
 
-        for(int i=1;i<=4;i++)
+        for(int i=1;i<=2;i++)
         {
-            helperCamere.insertData("Camera"+i,"Liber");
+            helperCamere.insertData("Camera"+i,"Liber", "");
         }
 
-        for(int i=5;i<=10;i++)
+        for(int i=3;i<=4;i++)
         {
-            helperCamere.insertData("Camera"+i,"Ocupat");
+            helperCamere.insertData("Camera"+i,"Ocupat", "");
         }
-
+        for(int i=5;i<=6;i++)
+        {
+            helperCamere.insertData("Camera"+i,"In reparatii", "AVEM NEVOIE DE PROSOAPE");
+        }
 
         String nume = "Bartos";
         String prenume = "Bogdan";
