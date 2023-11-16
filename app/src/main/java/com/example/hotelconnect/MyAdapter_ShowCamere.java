@@ -2,6 +2,8 @@ package com.example.hotelconnect;
 
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -107,14 +109,17 @@ public class MyAdapter_ShowCamere extends RecyclerView.Adapter<MyAdapter_ShowCam
                 popup.dismiss();
             }
         });
+        int bgOpacity = 0x33000000;
 
         TextView textView = popupView.findViewById(R.id.PopUpObs);
-
         textView.setText(mesaj);
-
         textView = popupView.findViewById(R.id.CameraPop);
-
         textView.setText(nume);
+
+        popup.setAnimationStyle(R.style.AnimatiePopup);
+        popup.setOutsideTouchable(true);
+        popup.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
 
         popup.showAtLocation(popupView,Gravity.CENTER,0,0);
 
