@@ -9,18 +9,59 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class ShowUserActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<String> nume , prenume , status;
-    DBHelper DB;
     MyAdapter_ShowUser adapter;
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycler_user);
 
-        DB = new DBHelper(this);
+        RequestQueue requestQueue = Volley.newRequestQueue(ShowUserActivity.this);
+
+        //URL UNDE ADAUGAM
+        String url = "http://192.168.0.31:9080/api/v1/angajati/show";
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response){
+
+                try {
+                    response.
+                    String nume = (String) response.getJSONArray()
+
+
+
+                }
+                catch (JSONException e){
+                    e.printStackTrace();
+                }
+
+
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+
         nume = new ArrayList<>();
         prenume = new ArrayList<>();
         status = new ArrayList<>();
@@ -36,7 +77,7 @@ public class ShowUserActivity extends AppCompatActivity {
     }
 
     private void displayData() {
-        Cursor cursor = DB.getData();
+        Cursor cursor = .getData();
         if(cursor.getCount() == 0)
         {
             Toast.makeText(this, "Baza de date este goala", Toast.LENGTH_SHORT).show();

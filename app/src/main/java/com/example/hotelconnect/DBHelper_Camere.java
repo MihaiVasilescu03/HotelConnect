@@ -36,8 +36,12 @@ public class DBHelper_Camere extends SQLiteOpenHelper {
         long result = myDB.insert("Camere" , null , contentValues);
         if(result == -1)
         {
+            myDB.close();
             return false;
-        } else {return true;}
+        } else {
+            myDB.close();
+            return true;
+        }
 
     }
     public List<CamereList> getData() {

@@ -9,8 +9,20 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+
 public class LoginActivity extends AppCompatActivity {
-    EditText numeReg,parolaReg;
+    EditText username, password;
     Button btnLogin;
     DBHelper helper;
 
@@ -21,79 +33,115 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        numeReg = findViewById(R.id.loginUser);
-        parolaReg = findViewById(R.id.loginPassword);
+        username = findViewById(R.id.loginUser);
+        password = findViewById(R.id.loginPassword);
 
         btnLogin = findViewById(R.id.loginButton);
 
-        helper = new DBHelper(this);
-
         helperCamere = new DBHelper_Camere(this);
 
-        for(int i=1;i<=2;i++)
-        {
-            helperCamere.insertData("Camera"+i,"Liber", "");
+        for (int i = 1; i <= 2; i++) {
+            helperCamere.insertData("Camera" + i, "Liber","");
         }
 
-        for(int i=3;i<=4;i++)
-        {
-            helperCamere.insertData("Camera"+i,"Ocupat", "");
+        for (int i = 3; i <= 4; i++) {
+            helperCamere.insertData("Camera" + i, "Ocupat","");
         }
-        for(int i=5;i<=6;i++)
-        {
-            helperCamere.insertData("Camera"+i,"In reparatii", "AVEM NEVOIE DE PROSOAPE");
+        for (int i = 5; i <= 6; i++) {
+            helperCamere.insertData("Camera" + i, "In reparatii","aaaa");
         }
 
-        String nume = "Bartos";
-        String prenume = "Bogdan";
-        if(!helper.checkNumePrenume(nume,prenume) )
-            helper.insertData(nume,prenume,"office@hotelstop.ro","manager123", "manager");
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
 
-                String username = numeReg.getText().toString();
-                String parola = parolaReg.getText().toString();
+                authenticateUser();
 
-                boolean isAuthenticated = helper.authenticateUser(username, parola);
+                RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
 
+                //URL UNDE ADAUGAM
+                String url = "http://192.168.0.31:9080/api/v1/angajati/login";
 
-                if(username.equals("") || parola.equals("")) {
-                    Toast.makeText(LoginActivity.this, "Toate campurile trebuie completate", Toast.LENGTH_SHORT).show();
+                HashMap<String, String> params = new HashMap<String, String>();
 
-                }else {
-                    Boolean verificareDate = helper.checkUsernamePassword(username, parola);
-                    if (verificareDate) {
-                        if (isAuthenticated) {
+                params.put("username", username.getText().toString());
+                params.put("password", password.getText().toString());
 
-                            SharedPreferences preferences = getSharedPreferences("user_logat", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("username", username);
-                            editor.putString("password", parola);
-                            editor.apply();
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
 
-                            Toast.makeText(LoginActivity.this, "Conectarea a reusit!", Toast.LENGTH_SHORT).show();
-                            Boolean verificareStatus = helper.checkStatus(username,"manager");
-                            if(verificareStatus){
-                                Intent i = new Intent(getApplicationContext(),ManagerActivity.class);
-                                startActivity(i);
+                                    String username = (String) response.get("username");
+                                    String nume = (String) response.get("nume");
+                                    String prenume = (String) response.get("prenume");
+                                    String email = (String) response.get("email");
+                                    String status = (String) response.get("status");
+
+                                    Intent intent;
+                                    if (status.equals("manager")) {
+                                        intent = new Intent(getApplicationContext(), ManagerActivity.class);
+                                    } else {
+                                        intent = new Intent(getApplicationContext(), UserActivity.class);
+                                    }
+
+                                    intent.putExtra("username", username);
+                                    intent.putExtra("password", password.getText().toString());
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    finish();
+                                    startActivity(intent);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                    System.out.println(e.getMessage());
+                                }
                             }
-                            else{
-                                Intent i = new Intent(getApplicationContext(), UserActivity.class);
-                                startActivity(i);
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                error.printStackTrace();
+                                System.out.println(error.getMessage());
+                                Toast.makeText(LoginActivity.this, "Autentificare a esuat!", Toast.LENGTH_SHORT).show();
                             }
-                            numeReg.setText("");
-                            parolaReg.setText("");
-                        }
-                    } else{
-                        Toast.makeText(LoginActivity.this, "Numele utilizatorului sau parola sunt gresite!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
+                        });
+                requestQueue.add(jsonObjectRequest);
 
             }
         });
 
+    }
+
+    public void authenticateUser() {
+        if (!validateUsername() || !validatePassword()) {
+            validatePassword();
+            validateUsername();
+        }
+    }
+
+    public boolean validateUsername() {
+        String usernm = username.getText().toString();
+
+        if (usernm.isEmpty()) {
+            username.setError("Acest camp trebuie completat!");
+            return false;
+        } else {
+            username.setError(null);
+            return true;
+        }
+    }
+
+    public boolean validatePassword() {
+        String pass = password.getText().toString();
+
+        if (pass.isEmpty()) {
+            password.setError("Acest camp trebuie completat!");
+            return false;
+        } else {
+            password.setError(null);
+            return true;
+        }
     }
 }

@@ -123,9 +123,6 @@ public class MyAdapter_ShowCamere extends RecyclerView.Adapter<MyAdapter_ShowCam
 
         popup.showAtLocation(popupView,Gravity.CENTER,0,0);
 
-
-
-
     }
 
 }
