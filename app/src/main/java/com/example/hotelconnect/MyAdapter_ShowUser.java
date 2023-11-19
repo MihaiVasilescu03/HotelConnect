@@ -10,44 +10,35 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MyAdapter_ShowUser extends RecyclerView.Adapter<MyAdapter_ShowUser.MyViewHolder> {
+public class MyAdapter_ShowUser extends RecyclerView.Adapter<UserHolder> {
     private Context context;
-    private ArrayList nameId , prenumeId , statusId;
+    private List<User> userList;
 
-    public MyAdapter_ShowUser(Context context, ArrayList nameId, ArrayList prenumeId, ArrayList statusId) {
-        this.context = context;
-        this.nameId = nameId;
-        this.prenumeId = prenumeId;
-        this.statusId = statusId;
+    public MyAdapter_ShowUser(List<User> userList) {
+        this.userList = userList;
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.show_user_menu , parent , false);
-        return new MyViewHolder(v);
+    public UserHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.show_user_menu , parent , false);
+        return new UserHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.nume_id.setText(String.valueOf(nameId.get(position)));
-        holder.prenume_id.setText(String.valueOf(prenumeId.get(position)));
-        holder.status_id.setText(String.valueOf(statusId.get(position)));
+    public void onBindViewHolder(@NonNull UserHolder holder, int position) {
+        User user = userList.get(position);
+        holder.nume.setText(user.getNume());
+        holder.prenume.setText(user.getPrenume());
+        holder.status.setText(user.getStatus());
     }
 
     @Override
     public int getItemCount() {
-        return nameId.size();
+        return userList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView nume_id ,prenume_id,status_id;
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-            nume_id = itemView.findViewById(R.id.numeRecycler);
-            prenume_id = itemView.findViewById(R.id.prenumeRecycler);
-            status_id = itemView.findViewById(R.id.statusRecycler);
-        }
-    }
 }
+

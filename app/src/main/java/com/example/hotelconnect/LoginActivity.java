@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                 RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
 
                 //URL UNDE ADAUGAM
-                String url = "http://192.168.0.31:9080/api/v1/angajati/login";
+                String url = "http://192.168.0.179:9080/api/v1/angajati/login";
 
                 HashMap<String, String> params = new HashMap<String, String>();
 
