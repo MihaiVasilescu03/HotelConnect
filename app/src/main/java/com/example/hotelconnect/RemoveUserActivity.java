@@ -10,56 +10,64 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class RemoveUserActivity extends AppCompatActivity {
 
-    EditText numeDel,prenumeDel;
-    DBHelper helper;
-    Button btnDel;
+    private EditText nume , prenume;
+    private Button deleteButton;
+
+    UserApi userApi;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.remove_user_menu);
-
-        numeDel = findViewById(R.id.removeNume);
-        prenumeDel = findViewById(R.id.removePrenume);
-
-        helper = new DBHelper(this);
-
-        btnDel = findViewById(R.id.removeUserButton_2);
+        RetrofitService retrofitService = new RetrofitService();
+        userApi = retrofitService.getRetrofit().create(UserApi.class);
+        nume = findViewById(R.id.removeNume);
+        prenume = findViewById(R.id.removePrenume);
+        deleteButton = findViewById(R.id.removeUserButton_2);
         ImageButton backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(view -> onBackPressed());
-        btnDel.setOnClickListener(new View.OnClickListener() {
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nume = numeDel.getText().toString();
-                String prenume = prenumeDel.getText().toString();
-
-                if(nume.equals("Bartos") && prenume.equals("Bogdan"))
-                    Toast.makeText(RemoveUserActivity.this, "Contul acesta nu poate fi sters!", Toast.LENGTH_SHORT).show();
-                else
-                if(nume.equals("")||prenume.equals("")){
-                    Toast.makeText(RemoveUserActivity.this, "Toate campurile trebuie completate!", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Boolean numePrenume = helper.checkNumePrenume(nume,prenume);
-                    if(numePrenume)
-                    {
-                        Toast.makeText(RemoveUserActivity.this, "Contul a fost sters cu succes!", Toast.LENGTH_SHORT).show();
-                        helper.deleteData(nume,prenume);
-                        numeDel.setText("");
-                        prenumeDel.setText("");
-                    }
-                    else {
-                        Toast.makeText(RemoveUserActivity.this, "Persoana nu a putut fi gasita in baza de date!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
+                deleteUser();
             }
         });
+    }
 
+    private void deleteUser() {
+        String numedel = nume.getText().toString().toLowerCase().trim();
+        String prenumedel = nume.getText().toString().toLowerCase().trim();
 
+        if (numedel.isEmpty() ||prenumedel.isEmpty()) {
+            Toast.makeText(this, "Completeaza toate campurile", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+        Call<Void> call = userApi.deleteUser(numedel, prenumedel);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(RemoveUserActivity.this, "Angajatul a fost sters cu succes", Toast.LENGTH_SHORT).show();
+                    nume.setText("");
+                    prenume.setText("");
+                } else {
+                    Toast.makeText(RemoveUserActivity.this, "Angajatul nu a fost gasit", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(RemoveUserActivity.this, "Eroare Server" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
-

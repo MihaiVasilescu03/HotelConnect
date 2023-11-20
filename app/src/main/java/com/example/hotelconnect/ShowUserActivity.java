@@ -30,7 +30,6 @@ import retrofit2.Response;
 
 public class ShowUserActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    ArrayList<String> nume , prenume , status;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
