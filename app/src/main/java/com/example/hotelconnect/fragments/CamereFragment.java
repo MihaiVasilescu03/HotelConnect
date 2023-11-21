@@ -10,6 +10,7 @@ import android.util.Log;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.hotelconnect.API.CamereApi;
 import com.example.hotelconnect.API.RetrofitService;
@@ -26,14 +27,24 @@ import retrofit2.Response;
 public class CamereFragment extends Fragment {
 
     private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_camere, container, false);
 
+        swipeRefreshLayout = view.findViewById(R.id.SwipeRefresh);
+
         recyclerView = view.findViewById(R.id.RecyclerViewCamere);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
 
+                loadCamere();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
         loadCamere();
 
         return view;
