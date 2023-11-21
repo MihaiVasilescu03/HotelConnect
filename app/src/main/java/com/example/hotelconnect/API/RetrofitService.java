@@ -1,4 +1,4 @@
-package com.example.hotelconnect;
+package com.example.hotelconnect.API;
 
 import com.google.gson.Gson;
 
@@ -15,7 +15,7 @@ public class RetrofitService {
     private void initializeRetrofit() {
         retrofit = new Retrofit
                 .Builder()
-                .baseUrl("http://192.168.0.179:9080")
+                .baseUrl("http://192.168.1.92:9080")
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .build();
     }

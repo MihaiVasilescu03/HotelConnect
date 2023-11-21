@@ -1,4 +1,4 @@
-package com.example.hotelconnect;
+package com.example.hotelconnect.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.example.hotelconnect.R;
+import com.example.hotelconnect.activities.AddUserActivity;
+import com.example.hotelconnect.activities.RemoveUserActivity;
+import com.example.hotelconnect.activities.ShowUserActivity;
 
 public class ManageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

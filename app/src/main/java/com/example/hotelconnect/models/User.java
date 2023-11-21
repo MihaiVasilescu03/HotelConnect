@@ -1,4 +1,4 @@
-package com.example.hotelconnect;
+package com.example.hotelconnect.models;
 
 public class User {
     private String username , nume , prenume , email , password , status;

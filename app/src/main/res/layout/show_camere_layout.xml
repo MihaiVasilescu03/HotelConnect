@@ -3,7 +3,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".CamereFragment"
+    tools:context=".fragments.CamereFragment"
     app:cardElevation="12dp"
     app:cardCornerRadius="16dp"
     android:layout_margin="16dp"
@@ -20,6 +20,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Camera "
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -1,10 +1,12 @@
-package com.example.hotelconnect;
+package com.example.hotelconnect.holders;
 
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.hotelconnect.R;
 
 public class UserHolder extends RecyclerView.ViewHolder {
     TextView nume , prenume , status;

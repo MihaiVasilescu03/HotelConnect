@@ -1,4 +1,4 @@
-package com.example.hotelconnect;
+package com.example.hotelconnect.activities;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -20,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.hotelconnect.R;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,7 +52,6 @@ public class AddUserActivity extends AppCompatActivity {
         prenumeReg = (EditText)findViewById(R.id.addsignupPrenume);
         emailReg = (EditText)findViewById(R.id.addsignupEmail);
         parolaReg = (EditText)findViewById(R.id.addsignupPassword);
-        statusReg = spinner.getSelectedItem().toString();
 
         btnSignUp = (Button)findViewById(R.id.addUserButton);
 
@@ -62,12 +62,14 @@ public class AddUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                String statusReg = spinner.getSelectedItem().toString();
+
                 verifFields();
 
                 RequestQueue requestQueue = Volley.newRequestQueue(AddUserActivity.this);
 
                 //URL UNDE ADAUGAM
-                String url = "http://192.168.0.179:9080/api/v1/angajati/register";
+                String url = "http://192.168.1.92:9080/api/v1/angajati/register";
 
                 // String request
 
@@ -97,7 +99,7 @@ public class AddUserActivity extends AppCompatActivity {
                         params.put("prenume", prenumeReg.getText().toString());
                         params.put("email", emailReg.getText().toString());
                         params.put("password", parolaReg.getText().toString());
-                        params.put("status", statusReg.toString());
+                        params.put("status", statusReg);
 
                         return params;
                     }

@@ -1,27 +1,19 @@
-package com.example.hotelconnect;
+package com.example.hotelconnect.activities;
 
-import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
+import com.example.hotelconnect.API.RetrofitService;
+import com.example.hotelconnect.API.UserApi;
+import com.example.hotelconnect.R;
+import com.example.hotelconnect.holders.MyAdapter_ShowUser;
+import com.example.hotelconnect.models.User;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -57,6 +49,7 @@ public class ShowUserActivity extends AppCompatActivity {
                     public void onFailure(Call<List<User>> call, Throwable t) {
                         Toast.makeText(ShowUserActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
                     }
+
                 });
 
     }

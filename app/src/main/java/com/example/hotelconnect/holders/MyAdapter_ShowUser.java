@@ -1,19 +1,20 @@
-package com.example.hotelconnect;
+package com.example.hotelconnect.holders;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.example.hotelconnect.R;
+import com.example.hotelconnect.holders.UserHolder;
+import com.example.hotelconnect.models.User;
+
 import java.util.List;
 
 public class MyAdapter_ShowUser extends RecyclerView.Adapter<UserHolder> {
-    private Context context;
+
     private List<User> userList;
 
     public MyAdapter_ShowUser(List<User> userList) {

@@ -16,18 +16,17 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.HotelTest1"
         tools:targetApi="31">
-        <activity android:name=".LoginActivity" android:exported="true">
+        <activity android:name=".activities.LoginActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ManagerActivity" android:exported="true"/>
-        <activity android:name=".UserActivity" android:exported="true"/>
-        <activity android:name=".AddUserActivity" android:parentActivityName=".ManagerActivity"/>
-        <activity android:name=".ShowUserActivity" android:exported="true"/>
-        <activity android:name=".RemoveUserActivity" android:exported="true"/>
-        <activity android:name=".SwitchStatusCamera" android:exported="true"/>
-        <activity android:name=".ProfileActivity" android:exported="true"/>
+        <activity android:name=".activities.ManagerActivity" android:exported="true"/>
+        <activity android:name=".activities.UserActivity" android:exported="true"/>
+        <activity android:name=".activities.AddUserActivity" android:parentActivityName=".activities.ManagerActivity"/>
+        <activity android:name=".activities.ShowUserActivity" android:exported="true"/>
+        <activity android:name=".activities.RemoveUserActivity" android:exported="true"/>
+        <activity android:name=".activities.ProfileActivity" android:exported="true"/>
     </application>
 </manifest>

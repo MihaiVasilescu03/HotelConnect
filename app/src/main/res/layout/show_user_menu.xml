@@ -9,7 +9,7 @@
     android:translationY="60dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="12dp"
-    tools:context=".ShowUserActivity">
+    tools:context=".activities.ShowUserActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

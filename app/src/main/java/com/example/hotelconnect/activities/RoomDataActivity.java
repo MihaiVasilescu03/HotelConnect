@@ -1,4 +1,4 @@
-package com.example.hotelconnect;
+package com.example.hotelconnect.activities;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -7,6 +7,8 @@ import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.hotelconnect.R;
 
 public class RoomDataActivity extends AppCompatActivity {
     @Override

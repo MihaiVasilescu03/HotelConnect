@@ -1,4 +1,4 @@
-package com.example.hotelconnect;
+package com.example.hotelconnect.activities;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,8 +7,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.hotelconnect.API.RetrofitService;
+import com.example.hotelconnect.API.UserApi;
+import com.example.hotelconnect.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,7 +46,7 @@ public class RemoveUserActivity extends AppCompatActivity {
 
     private void deleteUser() {
         String numedel = nume.getText().toString().toLowerCase().trim();
-        String prenumedel = nume.getText().toString().toLowerCase().trim();
+        String prenumedel = prenume.getText().toString().toLowerCase().trim();
 
         if (numedel.isEmpty() ||prenumedel.isEmpty()) {
             Toast.makeText(this, "Completeaza toate campurile", Toast.LENGTH_SHORT).show();
@@ -59,7 +62,7 @@ public class RemoveUserActivity extends AppCompatActivity {
                     nume.setText("");
                     prenume.setText("");
                 } else {
-                    Toast.makeText(RemoveUserActivity.this, "Angajatul nu a fost gasit", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RemoveUserActivity.this, "A aparut o problema!", Toast.LENGTH_SHORT).show();
                 }
             }
 
