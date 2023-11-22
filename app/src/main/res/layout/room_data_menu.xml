@@ -92,12 +92,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/roomNumberSpinner"
+    <TextView
+        android:id="@+id/nrCamera"
         android:layout_width="90dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginTop="70dp"
-        android:background="@drawable/roundedsquare"
+        android:textSize="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textRoom"
         app:layout_constraintTop_toTopOf="parent" />

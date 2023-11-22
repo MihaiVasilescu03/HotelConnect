@@ -1,5 +1,6 @@
 package com.example.hotelconnect.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -7,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -26,6 +28,7 @@ import retrofit2.Response;
 public class RoomDataActivity extends AppCompatActivity {
 
     EditText obs;
+    TextView camera;
 
     Button btn;
 
@@ -36,6 +39,9 @@ public class RoomDataActivity extends AppCompatActivity {
 
         btn = findViewById(R.id.buttonChangeRoom);
 
+        camera = findViewById(R.id.nrCamera);
+
+        camera.setText(getIntent().getStringExtra("cameraId"));
 
         ImageButton backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(view -> onBackPressed());
@@ -49,24 +55,14 @@ public class RoomDataActivity extends AppCompatActivity {
         adapterRoomStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerRoomStatus.setAdapter(adapterRoomStatus);
 
-        Spinner spinnerRoomNumber = (Spinner) findViewById(R.id.roomNumberSpinner);
-        ArrayAdapter<CharSequence> adapterRoomNumber = ArrayAdapter.createFromResource(
-                this,
-                R.array.room_number_array,
-                android.R.layout.simple_spinner_item
-        );
-        adapterRoomNumber.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerRoomNumber.setAdapter(adapterRoomNumber);
-
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String roomStatus = spinnerRoomStatus.getSelectedItem().toString();
-                Object idString = spinnerRoomNumber.getSelectedItem();
-                int id = Integer.parseInt(String.valueOf(idString));
+                int id = Integer.parseInt(camera.getText().toString());
                 obs = (EditText) findViewById(R.id.roomObs);
                 changeCamera(id, obs.getText().toString(), roomStatus);
+                finish();
             }
         });
     }

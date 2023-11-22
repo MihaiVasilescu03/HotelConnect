@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="10dip"
     android:layout_width="wrap_content"
@@ -48,12 +49,20 @@
             style="bold"/>
 
     </LinearLayout>
-    <Button
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/changeRoomButton"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:background="@color/limeyellow"
-        android:text="Close"
-        android:id="@+id/PopupButton"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/roundedsquare"
+        android:drawableLeft="@drawable/roomsettings"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Modifică camera"
+        android:textAllCaps="false"
+        android:textColor="@color/limedark"
+        app:layout_constraintBottom_toTopOf="@+id/userCoordinatorLayout"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </LinearLayout>

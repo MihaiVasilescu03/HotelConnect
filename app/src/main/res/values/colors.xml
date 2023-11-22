@@ -9,6 +9,10 @@
     <color name="limeyellow">#C6D1BB</color>
     <color name="limebg">#42572D</color>
     <color name="blackOpacity10">#1A000000</color>
+
+    <color name="ColOcupat">#E4C601</color>
+
+
     <style name="LimedarkIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@color/limedark</item>
     </style>

@@ -8,10 +8,10 @@
         <item>Recepționer(ă)</item>
     </string-array>
     <string-array name="room_status_array">
-        <item>De Ieșit</item>
         <item>Liber</item>
+        <item>De Ieșit</item>
+        <item>In curățenie</item>
         <item>Curată</item>
-        <item>Verificată</item>
         <item>Ocupat</item>
         <item>În reparații</item>
     </string-array>

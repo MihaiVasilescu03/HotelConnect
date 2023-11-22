@@ -2,6 +2,7 @@ package com.example.hotelconnect.holders;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
@@ -16,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hotelconnect.R;
+import com.example.hotelconnect.activities.RoomDataActivity;
+import com.example.hotelconnect.fragments.CamereFragment;
 import com.example.hotelconnect.models.Camere;
 
 import java.util.List;
@@ -44,6 +47,11 @@ public class MyAdapter_ShowCamere extends RecyclerView.Adapter<CamereHolder> {
         int bgOcupat = 0xFFFD4949;
         int bgLiber = 0xFF54FF71;
         int bgReparatii = 0xFF858585;
+        int bgInCuratenie = 0xFF393151;
+        int bgCurata = 0xFFBBFFF9;
+        int bgDeIesit = 0xFFE4C601;
+
+
 
         if(camere.getObs().equals(""))
             holder.obs.setText("NU");
@@ -55,8 +63,17 @@ public class MyAdapter_ShowCamere extends RecyclerView.Adapter<CamereHolder> {
         else if(camere.getStatus().equals("Ocupat")){
             holder.cardView.setCardBackgroundColor(bgOcupat);
         }
-        else if(camere.getStatus().equals("In reparatii")){
+        else if(camere.getStatus().equals("În reparații")){
             holder.cardView.setCardBackgroundColor(bgReparatii);
+        }
+        else if(camere.getStatus().equals("De Ieșit")){
+            holder.cardView.setCardBackgroundColor(bgDeIesit);
+        }
+        else if(camere.getStatus().equals("In curățenie")){
+            holder.cardView.setCardBackgroundColor(bgInCuratenie);
+        }
+        else if(camere.getStatus().equals("Curată")){
+            holder.cardView.setCardBackgroundColor(bgCurata);
         }
 
 
@@ -88,10 +105,13 @@ public class MyAdapter_ShowCamere extends RecyclerView.Adapter<CamereHolder> {
         View popupView = LayoutInflater.from(context).inflate(R.layout.popup_camere_obs,null);
         PopupWindow popup = new PopupWindow(popupView, WindowManager.LayoutParams.WRAP_CONTENT,WindowManager.LayoutParams.WRAP_CONTENT);
 
-        Button btn = (Button) popupView.findViewById(R.id.PopupButton);
+        Button btn = (Button) popupView.findViewById(R.id.changeRoomButton);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(context, RoomDataActivity.class);
+                i.putExtra("cameraId",id);
+                context.startActivity(i);
                 popup.dismiss();
             }
         });
