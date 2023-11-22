@@ -5,6 +5,12 @@ public class Camere {
     int id;
     String status, obs;
 
+    public Camere(int id, String status, String obs) {
+        this.id = id;
+        this.status = status;
+        this.obs = obs;
+    }
+
     public int getId() {
         return id;
     }

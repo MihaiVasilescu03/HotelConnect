@@ -28,5 +28,6 @@
         <activity android:name=".activities.ShowUserActivity" android:exported="true"/>
         <activity android:name=".activities.RemoveUserActivity" android:exported="true"/>
         <activity android:name=".activities.ProfileActivity" android:exported="true"/>
+        <activity android:name=".activities.RoomDataActivity" android:exported="true"/>
     </application>
 </manifest>
