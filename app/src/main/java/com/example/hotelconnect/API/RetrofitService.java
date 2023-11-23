@@ -1,5 +1,8 @@
 package com.example.hotelconnect.API;
 
+// de modificat ipv4 in retrofit, adduser, login
+
+
 import com.google.gson.Gson;
 
 import retrofit2.Retrofit;
@@ -15,7 +18,7 @@ public class RetrofitService {
     private void initializeRetrofit() {
         retrofit = new Retrofit
                 .Builder()
-                .baseUrl("http://192.168.1.92:9080")
+                .baseUrl("http://10.206.2.12:9080")
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .build();
     }

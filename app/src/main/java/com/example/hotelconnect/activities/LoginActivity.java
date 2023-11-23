@@ -2,6 +2,9 @@ package com.example.hotelconnect.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.text.format.Formatter;
 import android.view.View;
 import android.widget.Button;
 import android.os.Bundle;
@@ -19,6 +22,13 @@ import com.example.hotelconnect.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigInteger;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.util.Enumeration;
 import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
@@ -29,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+
 
         username = findViewById(R.id.loginUser);
         password = findViewById(R.id.loginPassword);
@@ -45,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                 RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
 
                 //URL UNDE ADAUGAM
-                String url = "http://192.168.1.92:9080/api/v1/angajati/login";
+                String url = "http://10.206.2.12:9080/api/v1/angajati/login";
 
                 HashMap<String, String> params = new HashMap<String, String>();
 
@@ -127,4 +138,5 @@ public class LoginActivity extends AppCompatActivity {
             return true;
         }
     }
+
 }
