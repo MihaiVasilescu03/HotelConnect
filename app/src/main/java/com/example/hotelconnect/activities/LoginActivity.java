@@ -1,10 +1,17 @@
 package com.example.hotelconnect.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationManagerCompat;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.provider.Settings;
 import android.text.format.Formatter;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.os.Bundle;
@@ -18,6 +25,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hotelconnect.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,11 +51,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
+        FirebaseApp.initializeApp(this);
 
         username = findViewById(R.id.loginUser);
         password = findViewById(R.id.loginPassword);
 
         btnLogin = findViewById(R.id.loginButton);
+
+        checkAndRequestNotificationPermission();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
 
@@ -56,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                 RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
 
                 //URL UNDE ADAUGAM
-                String url = "http://10.206.2.12:9080/api/v1/angajati/login";
+                String url = "http://192.168.1.92:9080/api/v1/angajati/login";
 
                 HashMap<String, String> params = new HashMap<String, String>();
 
@@ -85,6 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                                     intent.putExtra("username", username);
                                     intent.putExtra("password", password.getText().toString());
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    FirebaseMessaging.getInstance().subscribeToTopic("camere");
                                     finish();
                                     startActivity(intent);
                                 } catch (JSONException e) {
@@ -107,6 +122,47 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+
+    private void checkAndRequestNotificationPermission() {
+        if (!isNotificationPermissionGranted()) {
+            showPermissionExplanationDialog();
+        }
+    }
+
+    private boolean isNotificationPermissionGranted() {
+        return NotificationManagerCompat.from(this).areNotificationsEnabled();
+    }
+
+    private void showPermissionExplanationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Folosim notificări pentru a vă ține la curent cu evenimentele importante. Acordați permisiunea pentru cea mai bună experiență.")
+                .setTitle("Este necesară permisiunea");
+
+        builder.setPositiveButton("Acordă Permisiune", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                requestNotificationPermission();
+            }
+        });
+
+        builder.setNegativeButton("Anulează", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // Gestionați cazul în care utilizatorul anulează cererea
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void requestNotificationPermission() {
+        Intent intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
+                .putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+
+        startActivity(intent);
+    }
+
+
+
 
     public void authenticateUser() {
         if (!validateUsername() || !validatePassword()) {

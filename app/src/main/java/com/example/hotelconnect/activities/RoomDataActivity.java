@@ -2,6 +2,7 @@ package com.example.hotelconnect.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,7 +21,13 @@ import com.example.hotelconnect.API.UserApi;
 import com.example.hotelconnect.R;
 import com.example.hotelconnect.models.Camere;
 import com.example.hotelconnect.models.ChangePasswordRequest;
+import com.example.hotelconnect.models.Firebase;
+import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.io.IOException;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -62,10 +69,29 @@ public class RoomDataActivity extends AppCompatActivity {
                 int id = Integer.parseInt(camera.getText().toString());
                 obs = (EditText) findViewById(R.id.roomObs);
                 changeCamera(id, obs.getText().toString(), roomStatus);
+
+
+                sendNotification("Camera "+id, obs.getText().toString(), roomStatus);
+
                 finish();
             }
         });
     }
+
+    private void sendNotification(String s, String toString, String roomStatus) {
+        Firebase.getInstance().sendToTopicAsync("camere", s, "Status: " + roomStatus + "\nObservatii: " + toString)
+                .thenRun(() -> {
+                    // Notification sent successfully
+                    System.out.println("FCM message sent successfully!");
+                })
+                .exceptionally(e -> {
+                    // Handle failure
+                    e.printStackTrace();
+                    System.out.println("Error sending FCM message: " + e.getMessage());
+                    return null;
+                });
+    }
+
 
     private void changeCamera(int id, String obs, String status) {
         RetrofitService retrofitService = new RetrofitService();

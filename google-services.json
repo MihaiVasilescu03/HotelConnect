@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "451841870845",
+    "project_id": "hotelconnect-fea5b",
+    "storage_bucket": "hotelconnect-fea5b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451841870845:android:cc3b720c2da5efa4bbe794",
+        "android_client_info": {
+          "package_name": "com.example.hotelconnect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKBUmkAL7y7S3TXShnrbyPNJCpIfBKm2g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
