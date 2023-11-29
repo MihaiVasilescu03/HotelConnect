@@ -69,7 +69,7 @@ public class AddUserActivity extends AppCompatActivity {
                 RequestQueue requestQueue = Volley.newRequestQueue(AddUserActivity.this);
 
                 //URL UNDE ADAUGAM
-                String url = "http://10.206.2.12:9080/api/v1/angajati/register";
+                String url = "http://192.168.0.31:9080/api/v1/angajati/register";
 
                 // String request
 

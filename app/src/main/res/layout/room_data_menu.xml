@@ -120,7 +120,7 @@
         android:layout_marginTop="592dp"
         android:layout_marginEnd="161dp"
         android:layout_marginBottom="92dp"
-        android:text="Button"
+        android:text="Salvează modificările"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
