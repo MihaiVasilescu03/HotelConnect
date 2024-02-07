@@ -84,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                                     intent.putExtra("password", password.getText().toString());
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     FirebaseMessaging.getInstance().subscribeToTopic("camere");
+                                    FirebaseMessaging.getInstance().subscribeToTopic("anunturi");
                                     Toast.makeText(LoginActivity.this, "Autentificare a reusit!", Toast.LENGTH_SHORT).show();
                                     finish();
                                     startActivity(intent);

@@ -14,6 +14,7 @@ import com.example.hotelconnect.API_SERVICES.RetrofitService;
 import com.example.hotelconnect.R;
 import com.example.hotelconnect.models.Anunturi;
 import com.example.hotelconnect.models.Camere;
+import com.example.hotelconnect.models.Firebase;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,6 +41,9 @@ public class AddAnnouncementActivity extends Activity {
                 mainbody = (EditText) findViewById(R.id.announcementBody);
 
                 addAnunt(titlu.getText().toString(), mainbody.getText().toString());
+                sendNotification(titlu.getText().toString());
+
+                finish();
             }
         });
 
@@ -47,6 +51,20 @@ public class AddAnnouncementActivity extends Activity {
 
         ImageButton backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(view -> onBackPressed());
+    }
+
+    private void sendNotification(String titlu) {
+        Firebase.getInstance().sendToTopicAsync("anunturi", "Aveți un anunț nou!",titlu)
+                .thenRun(() -> {
+                    // Notification sent successfully
+                    System.out.println("FCM message sent successfully!");
+                })
+                .exceptionally(e -> {
+                    // Handle failure
+                    e.printStackTrace();
+                    System.out.println("Error sending FCM message: " + e.getMessage());
+                    return null;
+                });
     }
 
     private void addAnunt(String titlu, String mainbody) {
