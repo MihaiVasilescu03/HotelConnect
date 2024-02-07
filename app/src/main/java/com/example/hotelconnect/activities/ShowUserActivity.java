@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hotelconnect.API.RetrofitService;
-import com.example.hotelconnect.API.UserApi;
+import com.example.hotelconnect.API_SERVICES.RetrofitService;
+import com.example.hotelconnect.API_SERVICES.UserApi;
 import com.example.hotelconnect.R;
 import com.example.hotelconnect.holders.MyAdapter_ShowUser;
 import com.example.hotelconnect.models.User;
@@ -42,8 +42,6 @@ public class ShowUserActivity extends AppCompatActivity {
                     public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                         populateListView(response.body());
                     }
-
-
 
                     @Override
                     public void onFailure(Call<List<User>> call, Throwable t) {

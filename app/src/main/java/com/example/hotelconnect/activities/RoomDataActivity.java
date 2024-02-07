@@ -1,8 +1,6 @@
 package com.example.hotelconnect.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Message;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -12,22 +10,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.hotelconnect.API.CamereApi;
-import com.example.hotelconnect.API.RetrofitService;
-import com.example.hotelconnect.API.UserApi;
+import com.example.hotelconnect.API_SERVICES.CamereApi;
+import com.example.hotelconnect.API_SERVICES.RetrofitService;
 import com.example.hotelconnect.R;
 import com.example.hotelconnect.models.Camere;
-import com.example.hotelconnect.models.ChangePasswordRequest;
 import com.example.hotelconnect.models.Firebase;
-import com.google.firebase.messaging.FirebaseMessaging;
 
-import java.io.IOException;
-
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

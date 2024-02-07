@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.hotelconnect.API.CamereApi;
-import com.example.hotelconnect.API.RetrofitService;
+import com.example.hotelconnect.API_SERVICES.CamereApi;
+import com.example.hotelconnect.API_SERVICES.RetrofitService;
 import com.example.hotelconnect.R;
 import com.example.hotelconnect.holders.MyAdapter_ShowCamere;
 import com.example.hotelconnect.models.Camere;

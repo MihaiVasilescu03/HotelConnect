@@ -51,7 +51,7 @@
     </LinearLayout>
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/changeRoomButton"
-        android:layout_width="120dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="20dp"

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.hotelconnect.R;
+import com.example.hotelconnect.activities.AddAnnouncementActivity;
 import com.example.hotelconnect.activities.AddUserActivity;
 import com.example.hotelconnect.activities.RemoveUserActivity;
 import com.example.hotelconnect.activities.ShowUserActivity;
@@ -22,6 +23,7 @@ public class ManageFragment extends Fragment {
         Button buttonadduser = view.findViewById(R.id.addUserButton);
         Button buttonremoveuser = view.findViewById(R.id.removeUserButton);
         Button buttonshowuser = view.findViewById(R.id.showUserButton);
+        Button buttonaddannouncement = view.findViewById(R.id.addAnnouncementButton);
         buttonadduser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,6 +42,13 @@ public class ManageFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ShowUserActivity.class);
+                startActivity(intent);
+            }
+        });
+        buttonaddannouncement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddAnnouncementActivity.class);
                 startActivity(intent);
             }
         });

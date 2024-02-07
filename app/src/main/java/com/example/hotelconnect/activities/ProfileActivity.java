@@ -14,8 +14,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.hotelconnect.API.RetrofitService;
-import com.example.hotelconnect.API.UserApi;
+import com.example.hotelconnect.API_SERVICES.RetrofitService;
+import com.example.hotelconnect.API_SERVICES.UserApi;
 import com.example.hotelconnect.R;
 import com.example.hotelconnect.models.ChangePasswordRequest;
 

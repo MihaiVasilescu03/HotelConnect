@@ -9,8 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.hotelconnect.API.RetrofitService;
-import com.example.hotelconnect.API.UserApi;
+import com.example.hotelconnect.API_SERVICES.RetrofitService;
+import com.example.hotelconnect.API_SERVICES.UserApi;
 import com.example.hotelconnect.R;
 
 import retrofit2.Call;
@@ -45,15 +45,15 @@ public class RemoveUserActivity extends AppCompatActivity {
     }
 
     private void deleteUser() {
-        String numedel = nume.getText().toString().toLowerCase().trim();
-        String prenumedel = prenume.getText().toString().toLowerCase().trim();
+        String numedel = nume.getText().toString().trim();
+        String prenumedel = prenume.getText().toString().trim();
 
         if (numedel.isEmpty() ||prenumedel.isEmpty()) {
             Toast.makeText(this, "Completeaza toate campurile", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        Call<Void> call = userApi.deleteUser(numedel, prenumedel);
+        Call<Void> call = userApi.deleteUser(prenumedel, numedel);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

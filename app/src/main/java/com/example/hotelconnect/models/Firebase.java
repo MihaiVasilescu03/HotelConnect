@@ -20,7 +20,6 @@ public class Firebase {
 
     public static Firebase getInstance() {
         if (instance == null) {
-            // Replace "YOUR_SERVER_KEY" with your actual Firebase Cloud Messaging server key
             instance = new Firebase("AAAAaTPfy_0:APA91bGwqfLhmhBVKA9o7yNfimk8iGS1o_7uWK3T5isEkSM2r86yd4J4Mdq_z9toxsaKYX_2L-aG5z36nWtlttuelXdkQCu9hqeurCgU5kKGJPEgKHE3bDWus7sdgGZa3GqJItf38cKA");
         }
         return instance;

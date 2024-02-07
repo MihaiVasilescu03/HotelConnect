@@ -73,7 +73,7 @@
                 style="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Status : "
+                android:text="Funcție : "
                 android:textColor="@color/black"
                 android:textSize="24dp" />
 

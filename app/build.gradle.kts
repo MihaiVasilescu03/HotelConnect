@@ -43,15 +43,17 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("com.android.volley:volley:1.2.1")
-    implementation ("com.squareup.retrofit2:retrofit:2.8.1")
-    implementation("com.squareup.retrofit2:converter-gson:2.8.1")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.5.0")
+    implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
     implementation ("androidx.lifecycle:lifecycle-extensions:2.0.0")
     implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.google.firebase:firebase-messaging-directboot:20.2.0")
     implementation ("com.google.firebase:firebase-firestore:24.0.0")
+
 
 
 }

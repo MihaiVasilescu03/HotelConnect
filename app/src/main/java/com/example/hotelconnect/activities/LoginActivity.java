@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                 RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
 
                 //URL UNDE ADAUGAM
-                String url = "http://192.168.0.31:9080/api/v1/angajati/login";
+                String url = "http://192.168.1.92:9080/api/v1/angajati/login";
 
                 HashMap<String, String> params = new HashMap<String, String>();
 
@@ -84,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                                     intent.putExtra("password", password.getText().toString());
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     FirebaseMessaging.getInstance().subscribeToTopic("camere");
+                                    Toast.makeText(LoginActivity.this, "Autentificare a reusit!", Toast.LENGTH_SHORT).show();
                                     finish();
                                     startActivity(intent);
                                 } catch (JSONException e) {

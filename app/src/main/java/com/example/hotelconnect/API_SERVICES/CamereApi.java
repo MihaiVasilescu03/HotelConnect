@@ -1,4 +1,4 @@
-package com.example.hotelconnect.API;
+package com.example.hotelconnect.API_SERVICES;
 
 import com.example.hotelconnect.models.Camere;
 
